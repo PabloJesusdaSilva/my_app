@@ -1,6 +1,8 @@
 import {useState, useEffect} from "react";
 import axios from "axios";
 
+import CustomersCard from "../components/CustomersCard";
+
 const Customers = () => {
   const [customers, setCustomers] = useState([]);
 
@@ -17,6 +19,16 @@ const Customers = () => {
   return (
     <>
       <h1>Customers</h1>
+      {
+        customers.map(customer => {
+          <CustomersCard 
+            name={customer.first_name}
+            lastname={customer.last_name}
+            avatar={customer.avatar}
+            email={customer.email}
+          />
+        })
+      }
     </>
   );
 }
