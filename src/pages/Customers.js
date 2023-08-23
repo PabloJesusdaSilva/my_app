@@ -21,12 +21,14 @@ const Customers = () => {
       <h1>Customers</h1>
       {
         customers.map(customer => {
-          <CustomersCard 
-            name={customer.first_name}
-            lastname={customer.last_name}
-            avatar={customer.avatar}
-            email={customer.email}
-          />
+          return (
+              <CustomersCard 
+              name={customer.first_name}
+              lastname={customer.last_name}
+              avatar={customer.avatar}
+              email={customer.email}
+              />
+            )
         })
       }
     </>
