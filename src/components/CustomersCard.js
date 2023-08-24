@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import {
   Card,
   CardHeader,
@@ -6,8 +8,10 @@ import {
   IconButton
 } from '@mui/material';
 
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+import ModalConfirm from './ModalConfirm';
 
 const CustomersCard = ({ 
   name,
@@ -15,6 +19,20 @@ const CustomersCard = ({
   email,
   avatar
 }) => {
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleToggleOpenModal = () => {
+    setOpenModal(!openModal);
+  }
+
+  const handleConfirmModal = () => {
+    alert('Excluído!')
+  }
+
+  const handleDeleteCostumer = () => {
+    handleToggleOpenModal();
+  }
+
   return (
     <>
       <Card sx={{mt: 2, w: 4}}>
@@ -30,12 +48,20 @@ const CustomersCard = ({
       </Card>
       <CardActions disableSpacing>
         <IconButton aria-label="add to favorite">
-          <FavoriteIcon />
+          <EditIcon />
         </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
+        <IconButton aria-label="share" onClick={handleDeleteCostumer}>
+          <DeleteIcon />
         </IconButton>
       </CardActions>
+
+      <ModalConfirm 
+        open={openModal}
+        onClose={handleToggleOpenModal}
+        onConfirm={handleConfirmModal}
+        title="Deseja realmente excluir este cadastro?"
+        message="Ao confirmar não poderá reverter essa situação"
+      />
     </>
   );
 }
