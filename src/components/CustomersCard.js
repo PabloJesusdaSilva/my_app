@@ -1,8 +1,10 @@
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardActions from '@mui/material/CardActions';
-import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton'
+import {
+  Card,
+  CardHeader,
+  CardActions,
+  Avatar,
+  IconButton
+} from '@mui/material';
 
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
@@ -15,7 +17,7 @@ const CustomersCard = ({
 }) => {
   return (
     <>
-      <Card sx={{mt: 2}}>
+      <Card sx={{mt: 2, w: 4}}>
         <CardHeader 
           avatar={
             <Avatar aria-label="recipe" src={avatar}>
