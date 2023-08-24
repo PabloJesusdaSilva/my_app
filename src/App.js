@@ -13,16 +13,16 @@ import Home from './pages/Home';
 
 function App() {
   return (
-    <TemplateDefault>
-      <Router>
+    <Router>
+      <TemplateDefault>
         <Routes>
           <Route path="/customers" element={<TemplatePage title="Clientes" Component={Customers} />}/>
         </Routes>
         <Routes>
           <Route path='/' element={<TemplatePage title="Home" Component={Home} />} />
         </Routes>
-      </Router>
-    </TemplateDefault>
+      </TemplateDefault>
+    </Router>
   );
 }
 
