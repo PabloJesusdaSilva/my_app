@@ -15,7 +15,16 @@ const Customers = () => {
         const { data } = res.data
         setCustomers(data)
       })
-  }, [])
+  }, []);
+
+  const handleDeleteCostumer = id => {
+    axios.delete(`https://reqres.on/users/${id}`)
+    .then(() => {
+      const newCostumersState = customers.filter(customer => customer.id !== id);
+
+      setCustomers(newCostumersState);
+    })
+  }
 
   return (
     <Grid container>
@@ -24,10 +33,12 @@ const Customers = () => {
           return (
             <Grid item xs={12} md={4} sx={{p: 2}}>
               <CustomersCard 
+                id={customer.id}
                 name={customer.first_name}
                 lastname={customer.last_name}
                 avatar={customer.avatar}
                 email={customer.email}
+                onDelete={handleDeleteCostumer}
                 />
             </Grid>
           )

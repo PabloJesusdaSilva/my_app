@@ -14,10 +14,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import ModalConfirm from './ModalConfirm';
 
 const CustomersCard = ({ 
+  id,
   name,
   lastname,
   email,
-  avatar
+  avatar,
+  onDelete
 }) => {
   const [openModal, setOpenModal] = useState(false);
 
@@ -25,11 +27,11 @@ const CustomersCard = ({
     setOpenModal(!openModal);
   }
 
-  const handleConfirmModal = () => {
-    alert('Excluído!')
+  const handleConfirmModal = id => {
+    onDelete(id);
   }
 
-  const handleDeleteCostumer = () => {
+  const handleConfirmCostumer = () => {
     handleToggleOpenModal();
   }
 
@@ -50,7 +52,7 @@ const CustomersCard = ({
         <IconButton aria-label="add to favorite">
           <EditIcon />
         </IconButton>
-        <IconButton aria-label="share" onClick={handleDeleteCostumer}>
+        <IconButton aria-label="share" onClick={handleConfirmCostumer}>
           <DeleteIcon />
         </IconButton>
       </CardActions>
@@ -58,7 +60,7 @@ const CustomersCard = ({
       <ModalConfirm 
         open={openModal}
         onClose={handleToggleOpenModal}
-        onConfirm={handleConfirmModal}
+        onConfirm={() => handleConfirmModal(id)}
         title="Deseja realmente excluir este cadastro?"
         message="Ao confirmar não poderá reverter essa situação"
       />
