@@ -19,7 +19,8 @@ const CustomersCard = ({
   lastname,
   email,
   avatar,
-  onDelete
+  onDelete,
+  onEdit
 }) => {
   const [openModal, setOpenModal] = useState(false);
 
@@ -36,6 +37,10 @@ const CustomersCard = ({
     handleToggleOpenModal();
   }
 
+  const handleEditCostumer = id => {
+    onEdit(id);
+  }
+
   return (
     <>
       <Card sx={{mt: 2, w: 4}}>
@@ -50,10 +55,10 @@ const CustomersCard = ({
         />
       </Card>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorite">
+        <IconButton aria-label="edit" onClick={handleEditCostumer}>
           <EditIcon />
         </IconButton>
-        <IconButton aria-label="share" onClick={handleConfirmCostumer}>
+        <IconButton aria-label="delete" onClick={handleConfirmCostumer}>
           <DeleteIcon />
         </IconButton>
       </CardActions>
@@ -62,6 +67,7 @@ const CustomersCard = ({
         open={openModal}
         onClose={handleToggleOpenModal}
         onConfirm={() => handleConfirmModal(id)}
+        onEdit={() => handleEditCostumer(id)}
         title="Deseja realmente excluir este cadastro?"
         message="Ao confirmar não poderá reverter essa situação"
       />

@@ -1,10 +1,14 @@
 import {useState, useEffect} from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 import Grid from "@mui/material/Grid";
 
 import CustomersCard from "../../components/CustomersCard";
 
 const List = () => {
+  const navigate = useNavigate();
+
   const [customers, setCustomers] = useState([]);
 
   console.log(customers)
@@ -18,12 +22,16 @@ const List = () => {
   }, []);
 
   const handleDeleteCostumer = id => {
-    axios.delete(`https://reqres.on/users/${id}`)
+    axios.delete(`https://reqres.in/users/${id}`)
     .then(() => {
       const newCostumersState = customers.filter(customer => customer.id !== id);
 
       setCustomers(newCostumersState);
-    })
+    });
+  }
+
+  const handleEditCostumer = id => {
+    navigate(`/costumers/edit/{id}`);
   }
 
   return (
@@ -39,6 +47,7 @@ const List = () => {
                 avatar={customer.avatar}
                 email={customer.email}
                 onDelete={handleDeleteCostumer}
+                onEdit={handleEditCostumer}
                 />
             </Grid>
           )

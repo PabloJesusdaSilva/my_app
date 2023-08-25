@@ -9,6 +9,7 @@ import TemplatePage from './templates/Page';
 
 import CustomersList from './pages/customers/List';
 import CustomersRegister from './pages/customers/Register';
+import CustomersEdit from './pages/customers/Edit';
 import Home from './pages/Home';
 
 
@@ -16,6 +17,9 @@ function App() {
   return (
     <Router>
       <TemplateDefault>
+        <Routes>
+          <Route path="/customers/edit/:id" element={<TemplatePage title="Editar cliente" Component={CustomersEdit} />}/>
+        </Routes>
         <Routes>
           <Route path="/customers/add" element={<TemplatePage title="Cadastro de clientes" Component={CustomersRegister} />}/>
         </Routes>
