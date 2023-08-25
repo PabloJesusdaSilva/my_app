@@ -7,6 +7,8 @@ import {
   Button,
 } from "@mui/material";
 
+import Toasty from "../../components/Toasty";
+
 const Register = () => {
   const [form, setForm] = useState({
     name: {
@@ -18,7 +20,6 @@ const Register = () => {
       error: false,
     },
   });
-
 
   const handeInputChange = (e) => {
     const { name, value } = e.target;
@@ -90,6 +91,8 @@ const Register = () => {
       <div>
         <Button variant="contained" onClick={handleRegisterButton} sx={{ m: 2 }}>Cadastrar</Button>
       </div>
+
+      <Toasty open/>
     </Container>
   );
 }
