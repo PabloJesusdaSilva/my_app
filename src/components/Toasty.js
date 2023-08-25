@@ -3,7 +3,7 @@ import {
   Alert
 } from '@mui/material'
 
-const Toasty = ({ open, onClose }) => {
+const Toasty = ({ open, severity, message, onClose }) => {
   const handleClose = (event, reason) =>{
     if(reason === "clickaway") {
       return
@@ -21,13 +21,11 @@ const Toasty = ({ open, onClose }) => {
       open={open}
       autoHideDuration={6000}
       onClose={handleClose}
-      message="alert"
-      action={
-        <>
-          <Alert elevation={6} variant="filled" severity="success" />
-        </>
-      }
-      />
+      >
+        <Alert elevation={6} variant="filled" severity={severity}>
+          {message}
+        </Alert>
+      </Snackbar>
   )
 }
 
