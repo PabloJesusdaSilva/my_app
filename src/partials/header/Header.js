@@ -15,6 +15,7 @@ import {
 
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
+import PersonIcon from '@mui/icons-material/Person';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 import { useNavigate } from 'react-router-dom';
@@ -53,6 +54,12 @@ const Header = () => {
             <ListItemText>Home</ListItemText>
           </ListItem>
           <ListItem button onClick={() => handleMenuClick('/customers')}>
+            <ListItemIcon>
+              <PersonIcon />
+            </ListItemIcon>
+            <ListItemText>Lista de clientes</ListItemText>
+          </ListItem>
+          <ListItem button onClick={() => handleMenuClick('/customers/add')}>
             <ListItemIcon>
               <PersonAddIcon />
             </ListItemIcon>

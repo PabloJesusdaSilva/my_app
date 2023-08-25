@@ -29,6 +29,7 @@ const CustomersCard = ({
 
   const handleConfirmModal = id => {
     onDelete(id);
+    handleToggleOpenModal();
   }
 
   const handleConfirmCostumer = () => {
